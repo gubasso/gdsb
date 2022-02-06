@@ -1,0 +1,4 @@
+#!/bin/sh
+export DWMSTATUS_DIR=${HOME}/Projects/gdsb
+echo $(pamixer --get-volume-human | sed "s/%/%/;s/muted/X/") > ${HOME}/.cache/gdsb_volume
+. ${DWMSTATUS_DIR}/update

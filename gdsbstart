@@ -1,0 +1,21 @@
+#!/bin/sh
+# cp this start to local bin
+# start this with .xinitrc
+
+export DWMSTATUS_DIR=${HOME}/Projects/gdsb
+
+declare -a modules=( \
+    volume \
+    battery \
+)
+
+output=""
+for m in "${modules[@]}"
+do
+    . ${DWMSTATUS_DIR}/status/${m}
+    output="${output} | $(cat ${HOME}/.cache/gdsb_${m})"
+done
+
+output="${output} |"
+
+xsetroot -name "$(echo ${output})"

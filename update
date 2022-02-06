@@ -1,0 +1,17 @@
+#!/bin/sh
+
+declare -a modules=( \
+    volume \
+    battery \
+)
+
+output=""
+for m in "${modules[@]}"
+do
+    output="${output} | $(cat ${HOME}/.cache/gdsb_${m})"
+done
+
+output="${output} |"
+
+xsetroot -name "$(echo ${output})"
+
